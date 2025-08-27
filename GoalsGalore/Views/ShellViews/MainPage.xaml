@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:GoalsGalore.ViewModels"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:local="clr-namespace:GoalsGalore.Converters"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:controls="clr-namespace:GoalsGalore.Controls"
+             xmlns:model="clr-namespace:GoalsGalore.Model"
+             x:DataType="vm:MainViewModel"
+             x:Class="GoalsGalore.Views.ShellViews.MainPage"
+             x:Name="MainPageContent">
+
+    <controls:PlatTabView VerticalOptions="Fill">
+
+        <controls:PlatTabView.Items>
+
+            <model:PlatTabViewItem Title="Home" Icon="🏠">
+                <model:PlatTabViewItem.Content>
+                    <StackLayout Padding="16">
+                        <Label Text="Welcome Home!" TextColor="White" FontSize="24" />
+                        <Label Text="XAML content loaded." TextColor="#DDD" />
+                    </StackLayout>
+                </model:PlatTabViewItem.Content>
+            </model:PlatTabViewItem>
+
+            <model:PlatTabViewItem Title="👤 Profile">
+                <model:PlatTabViewItem.Content>
+                    <StackLayout>
+                        <Label Text="Profile Page"
+                               TextColor="White"
+                               FontSize="24"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                </model:PlatTabViewItem.Content>
+            </model:PlatTabViewItem>
+        </controls:PlatTabView.Items>
+    </controls:PlatTabView>
+</ContentPage>

@@ -1,14 +1,11 @@
 ﻿using GoalsGalore.ViewModels;
 
-namespace GoalsGalore;
+namespace GoalsGalore.Views.ShellViews;
 
 public partial class MainPage : ContentPage
 {
     public MainPage(MainViewModel vm)
     {
         InitializeComponent();
-        BindingContext = vm;
     }
-
-    
 }

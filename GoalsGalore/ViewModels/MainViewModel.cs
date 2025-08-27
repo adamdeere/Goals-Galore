@@ -1,25 +1,28 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
+using GoalsGalore.Model;
 using GoalsGalore.ViewModels.BaseViewModels;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace GoalsGalore.ViewModels;
 
 public partial class MainViewModel : BaseViewModel
 {
-    [ObservableProperty]
-    private int _count = 0;
-
-    [ObservableProperty]
-    private string _counterBtnText = "Click me";
+    [RelayCommand]
+    private void Appearing()
+    {
+        Debug.WriteLine("lololo");
+    }
 
     [RelayCommand]
-    public void CounterClicked()
+    private void Disappearing()
     {
-        Count++;
+        // Handle any cleanup or state saving if necessary
+        Debug.WriteLine("MainViewModel is disappearing");
+    }
 
-        if (Count == 1)
-            CounterBtnText = $"Clicked {Count} time";
-        else
-            CounterBtnText = $"Clicked {Count} times";
+    [RelayCommand]
+    private void TabSelected(string tabSelected)
+    {
     }
 }
