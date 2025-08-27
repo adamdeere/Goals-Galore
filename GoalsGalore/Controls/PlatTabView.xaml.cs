@@ -9,6 +9,26 @@ public partial class PlatTabView : ContentView
 {
     private int _previousIndex = 0;
 
+    public IList<PlatTabViewItem> Items { get; } = new ObservableCollection<PlatTabViewItem>();
+
+    /// <summary>
+    /// Optional callback to determine if a tab can be selected.
+    /// Return true to allow selection, false to block it.
+    /// </summary>
+    public Func<int, bool> CanSelectTab { get; set; }
+
+    public static readonly BindableProperty SelectedIndexProperty =
+                           BindableProperty.Create(nameof(SelectedIndex), 
+                                                   typeof(int), 
+                                                   typeof(PlatTabView), 
+                                                   0,
+                                                   propertyChanged: OnSelectedIndexChanged);
+
+    public static readonly BindableProperty TabHeaderTemplateProperty =
+                           BindableProperty.Create(nameof(TabHeaderTemplate),
+                                                   typeof(DataTemplate),
+                                                   typeof(PlatTabView));
+
     public PlatTabView()
     {
         InitializeComponent();
@@ -23,12 +43,6 @@ public partial class PlatTabView : ContentView
         };
     }
 
-    public IList<PlatTabViewItem> Items { get; } = new ObservableCollection<PlatTabViewItem>();
-
-    public static readonly BindableProperty SelectedIndexProperty =
-        BindableProperty.Create(nameof(SelectedIndex), typeof(int), typeof(PlatTabView), 0,
-            propertyChanged: OnSelectedIndexChanged);
-
     public int SelectedIndex
     {
         get => (int)GetValue(SelectedIndexProperty);
@@ -39,12 +53,19 @@ public partial class PlatTabView : ContentView
     {
         var control = (PlatTabView)bindable;
         int index = (int)newValue;
-        _ = control.SelectTabAsync(index);
+
+        if (control.CanSelectTab == null || control.CanSelectTab(index))
+        {
+            _ = control.SelectTabAsync(index);
+        }
+        else
+        {
+            // revert to previous index if blocked
+            control.SelectedIndex = (int)oldValue;
+        }
     }
 
-    public static readonly BindableProperty TabHeaderTemplateProperty =
-        BindableProperty.Create(nameof(TabHeaderTemplate), typeof(DataTemplate), typeof(PlatTabView));
-
+    
     public DataTemplate TabHeaderTemplate
     {
         get => (DataTemplate)GetValue(TabHeaderTemplateProperty);
@@ -72,7 +93,14 @@ public partial class PlatTabView : ContentView
             headerView.VerticalOptions = LayoutOptions.Fill;
 
             int index = i;
-            var tap = new TapGestureRecognizer { Command = new Command(() => SelectedIndex = index) };
+            var tap = new TapGestureRecognizer();
+            tap.Tapped += (s, e) =>
+            {
+                if (CanSelectTab == null || CanSelectTab(index))
+                    SelectedIndex = index;
+                else
+                    Shell.Current.CurrentPage.DisplayAlert("Blocked", "You cannot move to this tab yet.", "OK");
+            };
             headerView.GestureRecognizers.Add(tap);
 
             Grid.SetColumn(headerView, i);
@@ -103,7 +131,7 @@ public partial class PlatTabView : ContentView
                 };
             }
             view.BindingContext = item;
-            //view.Padding = new Thickness(12, 6);
+           // view.Padding = new Thickness(12, 6);
             return view;
         }
 

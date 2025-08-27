@@ -11,29 +11,39 @@
              x:Class="GoalsGalore.Views.ShellViews.MainPage"
              x:Name="MainPageContent">
 
-    <controls:PlatTabView VerticalOptions="Fill">
+    <controls:PlatTabView x:Name="CustomTabs"
+                          VerticalOptions="Fill">
 
         <controls:PlatTabView.Items>
 
             <model:PlatTabViewItem Title="Home" Icon="🏠">
-                <model:PlatTabViewItem.Content>
-                    <StackLayout Padding="16">
-                        <Label Text="Welcome Home!" TextColor="White" FontSize="24" />
-                        <Label Text="XAML content loaded." TextColor="#DDD" />
-                    </StackLayout>
-                </model:PlatTabViewItem.Content>
+
+                <StackLayout Padding="16">
+                    <Label Text="Welcome Home!" TextColor="White" FontSize="24" />
+                    <Label Text="XAML content loaded." TextColor="#DDD" />
+                </StackLayout>
             </model:PlatTabViewItem>
 
-            <model:PlatTabViewItem Title="👤 Profile">
-                <model:PlatTabViewItem.Content>
-                    <StackLayout>
-                        <Label Text="Profile Page"
+            <model:PlatTabViewItem Title="Profile" Icon="👤">
+
+                <StackLayout>
+                    <Label Text="Profile Page"
+                           TextColor="White"
+                           FontSize="24"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </StackLayout>
+            </model:PlatTabViewItem>
+
+            <model:PlatTabViewItem Title="Messing around" Icon="👤">
+
+                <StackLayout>
+                    <Label Text="Profile Page"
                                TextColor="White"
                                FontSize="24"
                                HorizontalOptions="Center"
                                VerticalOptions="Center" />
-                    </StackLayout>
-                </model:PlatTabViewItem.Content>
+                </StackLayout>
             </model:PlatTabViewItem>
         </controls:PlatTabView.Items>
     </controls:PlatTabView>
