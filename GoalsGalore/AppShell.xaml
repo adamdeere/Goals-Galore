@@ -5,7 +5,39 @@
        xmlns:local="clr-namespace:GoalsGalore.Views.ShellViews"
        Title="GoalsGalore">
 
+    <!-- Flyout Header -->
+    <Shell.FlyoutHeader>
+
+        <Grid Style="{StaticResource FlyoutHeaderStyle}"
+              RowDefinitions="Auto,Auto,Auto">
+
+            <Label Text="Platinum WMS Swift"
+                   Style="{StaticResource FlyoutTitleStyle}"
+                   HorizontalOptions="Center" />
+
+            <Image Grid.Row="2"
+                   Source="dotnet_bot.png"
+                   HeightRequest="64" WidthRequest="64"
+                   HorizontalOptions="Center" />
+
+            <BoxView Grid.Row="1"
+                     HeightRequest="1"
+                     Color="{StaticResource DividerColor}"
+                     HorizontalOptions="Fill" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
     <ShellContent Title="Home"
                   ContentTemplate="{DataTemplate local:MainPage}"
-                  Route="MainPage" />
+                  Route="StockCountPage" />
+
+    <!-- Flyout Items -->
+    <ShellContent Title="Tasks"
+                  Icon="dotnet_bot.png"
+                  Route="FilterPage"
+                  ContentTemplate="{DataTemplate local:FilterPage}" />
+
+    <!-- Logout -->
+    <MenuItem Text="Logout"
+              Style="{StaticResource FlyoutLogoutStyle}" />
 </Shell>

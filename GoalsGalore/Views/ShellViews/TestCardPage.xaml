@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:vm="clr-namespace:GoalsGalore.ViewModels"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="vm:TestCardPageViewModel"
+             x:Class="GoalsGalore.Views.ShellViews.TestCardPage"
+             x:Name="TestPageContent"
+             Title="TestCardPage">
+
+    <ContentPage.Behaviors>
+
+        <mct:EventToCommandBehavior Command="{Binding AppearingCommand}"
+                                    EventName="Appearing"
+                                    BindingContext="{Binding Path=BindingContext,
+                                                         Source={x:Reference TestPageContent}, x:DataType=ContentPage}" />
+    </ContentPage.Behaviors>
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="10">
+        <!-- Top Section (Buttons & Tabs) -->
+        <ScrollView Grid.Row="0" Orientation="Vertical">
+            <VerticalStackLayout Spacing="10">
+
+                <!-- Navigation Tabs -->
+                <Grid ColumnDefinitions="*,*,*">
+                    <Button Text="Details" Grid.Column="0" />
+                    <Button Text="Bay" Grid.Column="1" />
+                    <Button Text="Items" Grid.Column="2" />
+                </Grid>
+
+                <!-- Action Buttons -->
+                <Grid ColumnDefinitions="*,*"
+                      Padding="5"
+                      ColumnSpacing="5">
+
+                    <Button Text="Full Pallet"
+                            BackgroundColor="Green"
+                            TextColor="White"
+                            Grid.Column="0" />
+
+                    <Button Text="Loose Carton"
+                            BackgroundColor="DodgerBlue"
+                            TextColor="White"
+                            Grid.Column="1" />
+                </Grid>
+
+                <!-- Action Buttons -->
+                <Grid ColumnDefinitions="*,*"
+                      Padding="5"
+                      ColumnSpacing="5">
+
+                    <telerik:RadListPicker Placeholder="Pick a name!"
+                                           ItemsSource="{Binding Items}"
+                                           DisplayMemberPath="FullName">
+
+                        <telerik:RadListPicker.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding FirstName}"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center" />
+                            </DataTemplate>
+                        </telerik:RadListPicker.ItemTemplate>
+                    </telerik:RadListPicker>
+                </Grid>
+                <!-- Open Pallet -->
+                <Button Text="➕ Open new pallet"
+                        TextColor="Green"
+                        BorderColor="Green"
+                        BorderWidth="1"
+                        CornerRadius="8" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- CollectionView takes up middle space -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding UnloadedItems}"
+                        VerticalOptions="FillAndExpand">
+
+            <CollectionView.HeaderTemplate>
+                <DataTemplate>
+                    <!-- Section Title -->
+                    <Label Text="Unloaded Items:"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           BackgroundColor="#E0ECFF"
+                           Padding="6,2" />
+                </DataTemplate>
+            </CollectionView.HeaderTemplate>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <telerik:RadBorder Margin="5"
+                                       Padding="10"
+                                       BorderColor="#ccc"
+                                       CornerRadius="8">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Code}" FontAttributes="Bold" />
+                            <Label Text="{Binding Quantity}" FontSize="Small" />
+                            <Label Text="{Binding Location}" FontSize="Small" />
+                        </VerticalStackLayout>
+                    </telerik:RadBorder>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Bottom Confirm Button -->
+        <telerik:RadButton Grid.Row="2"
+                           Text="Confirm"
+                           BackgroundColor="DodgerBlue"
+                           TextColor="White"
+                           CornerRadius="10"
+                           HeightRequest="50"
+                           VerticalOptions="End" />
+    </Grid>
+</ContentPage>

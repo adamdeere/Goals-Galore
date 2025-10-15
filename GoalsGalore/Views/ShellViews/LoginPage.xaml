@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             Shell.FlyoutItemIsVisible="False"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource NeutralLight}"
+             x:Class="GoalsGalore.Views.ShellViews.LoginPage">
+
+    <Grid RowDefinitions="*,Auto,*"
+          Padding="20">
+
+        <!-- Center the card in middle row -->
+        <Grid Grid.Row="1">
+
+            <telerik:RadBorder CornerRadius="16"
+                               BorderColor="{StaticResource NeutralBorder}"
+                               BackgroundColor="White"
+                               Padding="5"
+                               Margin="0,20">
+
+                <VerticalStackLayout Spacing="10"
+                                     Padding="5">
+
+                    <!-- Settings/Sync row -->
+                    <HorizontalStackLayout HorizontalOptions="End" Spacing="5">
+
+                        <ImageButton Source="upgrade.png"
+                                     WidthRequest="28"
+                                     HeightRequest="28"
+                                     BackgroundColor="Transparent" />
+
+                        <ImageButton Source="settings_primary.png"
+                                     WidthRequest="28"
+                                     HeightRequest="28"
+                                     BackgroundColor="Transparent" />
+                    </HorizontalStackLayout>
+
+                    <!-- Logo -->
+                    <Image Source="warehouse_primary.png"
+                           WidthRequest="80"
+                           HeightRequest="80"
+                           HorizontalOptions="Center" />
+
+                    <!-- App Version -->
+                    <Label Text="v1.29.0.0"
+                           FontSize="12"
+                           TextColor="{StaticResource TextMuted}"
+                           HorizontalOptions="Center" />
+
+                    <!-- Username -->
+                    <VerticalStackLayout>
+                        <Label Text="Username"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextDark}" />
+
+                        <Entry Placeholder="Enter username"
+                               HeightRequest="48"
+                               BackgroundColor="{StaticResource NeutralLight}"
+                               TextColor="{StaticResource TextDark}" />
+                    </VerticalStackLayout>
+
+                    <!-- Password -->
+                    <VerticalStackLayout>
+
+                        <Label Text="Password"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextDark}" />
+
+                        <Entry Placeholder="Enter password"
+                               IsPassword="True"
+                               HeightRequest="48"
+                               BackgroundColor="{StaticResource NeutralLight}"
+                               TextColor="{StaticResource TextDark}" />
+                    </VerticalStackLayout>
+
+                    <!-- Login Button -->
+                    <Button Text="Login"
+                            FontSize="18"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White"
+                            FontAttributes="Bold" />
+
+                    <!-- Login Button -->
+                    <Button Text="Upgrade"
+                            FontSize="18"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            BackgroundColor="{StaticResource Tertiary}"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            IsVisible="False" />
+                </VerticalStackLayout>
+            </telerik:RadBorder>
+        </Grid>
+    </Grid>
+</ContentPage>

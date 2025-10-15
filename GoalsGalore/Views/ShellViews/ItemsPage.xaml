@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:GoalsGalore.ViewModels"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:selectors="clr-namespace:GoalsGalore.Selectors"
+             x:DataType="vm:ItemsViewModel"
+             x:Class="GoalsGalore.Views.ShellViews.ItemsPage"
+             x:Name="MainPageContent"
+             Title="ItemsPage">
+
+    <ContentPage.Behaviors>
+
+        <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}"
+                                        EventName="Appearing"
+                                        BindingContext="{Binding Path=BindingContext,
+                                                          Source={x:Reference MainPageContent}, x:DataType=ContentPage}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="HeaderItemStyle" TargetType="telerik:TabViewHeaderItem">
+
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+
+                    <VisualStateGroupList>
+
+                        <VisualStateGroup Name="CommonStates">
+
+                            <VisualState Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="FontSize" Value="14" />
+                                    <Setter Property="FontAttributes" Value="None" />
+                                    <Setter Property="TextColor" Value="#333" />
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary25}" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState Name="Selected">
+
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary5}" />
+                                    <Setter Property="FontAttributes" Value="Italic, Bold" />
+                                    <Setter Property="FontSize" Value="14" />
+                                    <Setter Property="TextColor" Value="#333" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,2" />
+                                    <Setter Property="BorderColor" Value="{StaticResource Tabborder}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Label">
+
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#333" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <telerik:RadTabView HeaderItemStyle="{StaticResource HeaderItemStyle}">
+
+        <telerik:TabViewItem HeaderText="References">
+
+            <telerik:TabViewItem.ImageSource>
+
+                <FontImageSource Glyph="&#xe85b;"
+                                 Size="16"
+                                 Color="Black"
+                                 FontFamily="TelerikFontExamples" />
+            </telerik:TabViewItem.ImageSource>
+
+            <ScrollView>
+                <VerticalStackLayout Padding="20" Spacing="16">
+
+                    <telerik:RadBorder BackgroundColor="White"
+                                       CornerRadius="16"
+                                       Padding="20">
+
+                        <Grid RowDefinitions="*,*,*,*,*,*"
+                              RowSpacing="16">
+                            <!-- Batch 1-->
+                            <VerticalStackLayout Grid.Row="0">
+
+                                <Label Text="Batch:" />
+
+                                <telerik:RadEntry Placeholder="Enter a batch no."
+                                                  Text="{Binding Batch}"
+                                                  VerticalOptions="Center"
+                                                  CornerRadius="8"
+                                                  BorderThickness="5" />
+                            </VerticalStackLayout>
+
+                            <!-- Batch 2-->
+                            <VerticalStackLayout Grid.Row="1">
+                                <Label Text="Batch 2:"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center" />
+
+                                <telerik:RadEntry Text="{Binding Batch2}"
+                                                  Placeholder="Enter a batch no."
+                                                  AutomationId="Batch2"
+                                                  VerticalOptions="Center" />
+                            </VerticalStackLayout>
+
+                            <!-- Reference 1-->
+                            <VerticalStackLayout Grid.Row="2">
+                                <Label Text="Reference 1:"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       Margin="0,0,10,0" />
+
+                                <telerik:RadEntry Text="{Binding Reference1}"
+                                                  Placeholder="Enter a reference"
+                                                  Margin="0,0,10,0"
+                                                  VerticalOptions="Center" />
+                            </VerticalStackLayout>
+
+                            <!-- Reference 2-->
+                            <VerticalStackLayout Grid.Row="3">
+                                <Label Text="Reference 2:"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center" />
+
+                                <telerik:RadEntry Text="{Binding Reference2}"
+                                                  Placeholder="Enter a reference"
+                                                  AutomationId="Reference2"
+                                                  VerticalOptions="Center" />
+                            </VerticalStackLayout>
+
+                            <!-- Comments -->
+                            <VerticalStackLayout Grid.Row="4">
+                                <Label Text="Comments:"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center" />
+
+                                <telerik:RadEntry Text="{Binding Comments}"
+                                                  Placeholder="Enter any comments"
+                                                  VerticalOptions="Center" />
+                            </VerticalStackLayout>
+
+                            <!-- Date -->
+                            <VerticalStackLayout Grid.Row="5">
+                                <Label Text="Reference 2:"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center" />
+
+                                <telerik:RadDatePicker x:Name="ExpiryDatePicker"
+                                                       AutomationId="Expiry"
+                                                       VerticalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </telerik:RadBorder>
+                </VerticalStackLayout>
+            </ScrollView>
+        </telerik:TabViewItem>
+
+        <telerik:TabViewItem HeaderText="Account">
+            <telerik:TabViewItem.ImageSource>
+                <FontImageSource Glyph="&#xe836;"
+                                 Size="16"
+                                 Color="Black"
+                                 FontFamily="TelerikFontExamples" />
+            </telerik:TabViewItem.ImageSource>
+            <Label Margin="10" Text="This is the content of the Account tab" />
+        </telerik:TabViewItem>
+        <telerik:TabViewItem HeaderText="Files">
+            <telerik:TabViewItem.ImageSource>
+                <FontImageSource Glyph="&#xe847;"
+                                 Size="16"
+                                 Color="Black"
+                                 FontFamily="TelerikFontExamples" />
+            </telerik:TabViewItem.ImageSource>
+            <Label Margin="10" Text="This is the content of the Files tab" />
+        </telerik:TabViewItem>
+    </telerik:RadTabView>
+</ContentPage>

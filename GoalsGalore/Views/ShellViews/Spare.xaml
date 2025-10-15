@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             x:Class="GoalsGalore.Views.ShellViews.Spare">
+    <!--<telerik:RadBorder>
+
+      <telerik:RadBorder.Resources>
+          <ResourceDictionary>
+              <converter:ItemStatusConverter x:Key="ItemStatusConverter" />
+          </ResourceDictionary>
+      </telerik:RadBorder.Resources>
+
+      <Grid ColumnDefinitions="auto,*">
+
+          <VerticalStackLayout Spacing="1"
+                               Padding="5">
+
+              <Label Text="{Binding Product.SKUCode}"
+                     TextColor="{StaticResource bg-primary}"
+                     FontSize="16" />
+
+              <Label Text="{Binding Product.Description}" />
+
+              <Label Text="{Binding PickItem.Order.CustomerReference, StringFormat='Cust Ref: {0}'}" />
+              <Label Text="{Binding PickItem.GRN, StringFormat='GRN: {0}'}" />
+              <Label Text="{Binding PickItem.LocationCode, StringFormat='Pickup: {0}'}" />
+              <Label Text="{Binding PickItem.BatchReference, StringFormat='Batch: {0}'}" />
+
+              <HorizontalStackLayout Spacing="5">
+                  <Label Text="Status:" />
+                  <Label Text="{Binding PickItem.ItemStatus}"
+                  FontAttributes="Bold"
+                  TextColor="{Binding PickItem.ItemStatus, Converter={StaticResource ItemStatusConverter}}" />
+              </HorizontalStackLayout>
+
+              <HorizontalStackLayout Spacing="5">
+                  <Label Text="Ordered:" />
+
+                  <Label Text="{Binding PickItem.QtyOrdered}"
+                         FontAttributes="Bold" />
+
+                  <Label Text="Picked:"
+                      Margin="50,0,0,0" />
+
+                  <Label Text="{Binding PickItem.QtyPicked}"
+                      FontAttributes="Bold" />
+              </HorizontalStackLayout>
+
+              <Label Text="{Binding PickItem.LocationCode, StringFormat='STU: {0}'}"
+                  IsVisible="{Binding ShowSTUCode}" />
+
+              <Label Text="{Binding PickItem.DropLocationCode, StringFormat='Dropped: {0}'}"
+                  IsVisible="{Binding ShowDropLocationCode}" />
+          </VerticalStackLayout>
+
+          <ImageButton Source="more_vert_bigger.png"
+                       Margin="0,0,5,0"
+                       Grid.Column="1"
+                       HorizontalOptions="End"
+                       VerticalOptions="Start"
+                       HeightRequest="50"
+                       Command="{Binding OpenMenuCommand}"
+                       IsVisible="{Binding ShowContextMenu}">
+
+              <telerik:RadPopup.Popup>
+
+     -->
+    <!--The BindingContext of the popup is the item, so we can bind to IsPopupOpen and Name.-->
+    <!--
+
+                  <telerik:RadPopup IsOpen="{Binding IsPopupOpen}"
+                                 Placement="Left"
+                                 OutsideBackgroundColor="#33000000">
+
+                      <VerticalStackLayout BackgroundColor="White">
+
+                          <telerik:RadBorder AutomationId="border"
+                                          WidthRequest="125"
+                                          HeightRequest="40">
+
+                              <HorizontalStackLayout Spacing="5">
+
+                                  <Image Source="info.png"
+                                      HorizontalOptions="Start"
+                                      WidthRequest="30"
+                                      HeightRequest="30" />
+
+                                  <Label Text="Info"
+                                      Margin="20,0,0,0"
+                                      VerticalOptions="Center" HorizontalOptions="Center" />
+                              </HorizontalStackLayout>
+
+                              <telerik:RadBorder.GestureRecognizers>
+                                  <TapGestureRecognizer Command="{Binding x:DataType='vmdetails:PickListDetailsViewModel',
+                                                     Source={RelativeSource AncestorType={x:Type vmdetails:PickListDetailsViewModel}},
+                                                     Path=DisplayInfoCommand}"
+                                                     CommandParameter="{Binding .}" />
+                              </telerik:RadBorder.GestureRecognizers>
+                          </telerik:RadBorder>
+                      </VerticalStackLayout>
+                  </telerik:RadPopup>
+              </telerik:RadPopup.Popup>
+          </ImageButton>
+      </Grid>
+  </telerik:RadBorder>-->
+</ContentView>

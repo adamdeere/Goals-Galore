@@ -1,50 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:GoalsGalore.ViewModels"
-             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
-             xmlns:local="clr-namespace:GoalsGalore.Converters"
-             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:controls="clr-namespace:GoalsGalore.Controls"
-             xmlns:model="clr-namespace:GoalsGalore.Model"
-             x:DataType="vm:MainViewModel"
-             x:Class="GoalsGalore.Views.ShellViews.MainPage"
-             x:Name="MainPageContent">
+<base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:vm="clr-namespace:GoalsGalore.ViewModels"
+               xmlns:base="clr-namespace:GoalsGalore.Views.BasePages"
+               xmlns:stepcards="clr-namespace:PlatinumWMSSwiftUtilityLib.Controls;assembly=PlatinumWMSSwiftUtilityLib"
+               xmlns:fontIcons="clr-namespace:PlatinumWMSSwiftUtilityLib.Helpers;assembly=PlatinumWMSSwiftUtilityLib"
+               xmlns:local="clr-namespace:GoalsGalore.Views"
+               x:DataType="vm:MainViewModel"
+               x:TypeArguments="vm:MainViewModel"
+               x:Class="GoalsGalore.Views.ShellViews.MainPage"
+               x:Name="MainPageContent">
 
-    <controls:PlatTabView x:Name="CustomTabs"
-                          VerticalOptions="Fill">
+    <stepcards:PlatTabView x:Name="PlatTabView"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Fill">
 
-        <controls:PlatTabView.Items>
+        <stepcards:PlatTabView.Items>
 
-            <model:PlatTabViewItem Title="Home" Icon="🏠">
+            <stepcards:PlatTabViewItem Title="Details"
+                                    Icon="{x:Static fontIcons:GoogleIconGlyths.ListAltIcon}"
+                                    FontFamily="{StaticResource GoogleFontIcons}"
+                                    Command="{Binding UnloadingBayScanCommand}">
 
-                <StackLayout Padding="16">
-                    <Label Text="Welcome Home!" TextColor="White" FontSize="24" />
-                    <Label Text="XAML content loaded." TextColor="#DDD" />
-                </StackLayout>
-            </model:PlatTabViewItem>
+                <local:SubViewA BindingContext="{Binding VmA}" />
+            </stepcards:PlatTabViewItem>
 
-            <model:PlatTabViewItem Title="Profile" Icon="👤">
+            <stepcards:PlatTabViewItem Title="Bay"
+                                    Icon="{x:Static fontIcons:GoogleIconGlyths.ForkliftIcon}"
+                                    FontFamily="{StaticResource GoogleFontIcons}"
+                                    Command="{Binding UnloadingBayScanCommand}">
 
-                <StackLayout>
-                    <Label Text="Profile Page"
-                           TextColor="White"
-                           FontSize="24"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center" />
-                </StackLayout>
-            </model:PlatTabViewItem>
+                <local:SubViewB BindingContext="{Binding VmB}" />
+            </stepcards:PlatTabViewItem>
 
-            <model:PlatTabViewItem Title="Messing around" Icon="👤">
+            <stepcards:PlatTabViewItem Title="Seal"
+                                    Icon="{x:Static fontIcons:GoogleIconGlyths.VerifiedIcon}"
+                                    FontFamily="{StaticResource GoogleFontIcons}"
+                                    ValidationMessage="Please confirm unloading bay."
+                                    CanRender="{Binding SealVisible}">
 
-                <StackLayout>
-                    <Label Text="Profile Page"
-                               TextColor="White"
-                               FontSize="24"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center" />
-                </StackLayout>
-            </model:PlatTabViewItem>
-        </controls:PlatTabView.Items>
-    </controls:PlatTabView>
-</ContentPage>
+                <local:SubViewC BindingContext="{Binding VmC}" />
+            </stepcards:PlatTabViewItem>
+        </stepcards:PlatTabView.Items>
+    </stepcards:PlatTabView>
+</base:BasePage>

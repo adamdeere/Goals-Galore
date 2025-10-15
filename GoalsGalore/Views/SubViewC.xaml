@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:vm="clr-namespace:GoalsGalore.ViewModels.MainViewModels"
+             xmlns:model="clr-namespace:GoalsGalore.Model"
+             x:DataType="vm:ViewModelC"
+             x:Class="GoalsGalore.Views.SubViewC">
+
+    <Grid RowDefinitions="Auto, *">
+
+        <Label Text="this is some text" />
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Characters}"
+                        SelectionMode="Single"
+                        Margin="10">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:WizardAttributes">
+
+                    <controls:RadBorder CornerRadius="20"
+                                        BorderThickness="1"
+                                        Margin="10,5"
+                                        BorderColor="{StaticResource Black}"
+                                        BackgroundColor="White">
+
+                        <Grid RowDefinitions="Auto,Auto"
+                              ColumnDefinitions="100,*,Auto"
+                              Padding="10">
+
+                            <!-- Character Image -->
+                            <Image Grid.RowSpan="2"
+                               Grid.Column="0"
+                               Source="{Binding Image}"
+                               Aspect="AspectFill"
+                               HeightRequest="100"
+                               WidthRequest="100"
+                               Margin="0,0,10,0"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start">
+
+                                <Image.Clip>
+                                    <RoundRectangleGeometry CornerRadius="12"
+                                                        Rect="0,0,100,100" />
+                                </Image.Clip>
+                            </Image>
+
+                            <!-- Name and Species -->
+                            <VerticalStackLayout Grid.Column="1"
+                                             Spacing="2"
+                                             VerticalOptions="Center">
+
+                                <Label Text="{Binding Slug}"
+                                   FontAttributes="Bold"
+                                   FontSize="18"
+                                   TextColor="Black" />
+
+                                <Label Text="{Binding Species}"
+                                   FontSize="14"
+                                   TextColor="#666" />
+
+                                <Label Text="{Binding Gender}"
+                                   FontSize="13"
+                                   TextColor="#999" />
+
+                                <Label Text="{Binding Born}"
+                                   FontSize="13"
+                                   TextColor="#999" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="2">
+                                <!-- "More Info" Button -->
+                                <controls:RadButton Text="Wiki"
+                                                    FontSize="13"
+                                                    Padding="8,4"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="End"
+                                                    BackgroundColor="#f2f2f2"
+                                                    TextColor="#333"
+                                                    CornerRadius="12"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenWikiCommand}"
+                                                    CommandParameter="{Binding Wiki}" />
+                                <!-- "More Info" Button -->
+                                <controls:RadButton Text="Wiki"
+                                                    FontSize="13"
+                                                    Padding="8,4"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="End"
+                                                    BackgroundColor="#f2f2f2"
+                                                    TextColor="#333"
+                                                    CornerRadius="12"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenWikiCommand}"
+                                                    CommandParameter="{Binding Wiki}" />
+                                <!-- "More Info" Button -->
+                                <controls:RadButton Text="Wiki"
+                                                    FontSize="13"
+                                                    Padding="8,4"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="End"
+                                                    BackgroundColor="#f2f2f2"
+                                                    TextColor="#333"
+                                                    CornerRadius="12"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenWikiCommand}"
+                                                    CommandParameter="{Binding Wiki}" />
+                                <!-- "More Info" Button -->
+                                <controls:RadButton Text="Wiki"
+                                                    FontSize="13"
+                                                    Padding="8,4"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="End"
+                                                    BackgroundColor="#f2f2f2"
+                                                    TextColor="#333"
+                                                    CornerRadius="12"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenWikiCommand}"
+                                                    CommandParameter="{Binding Wiki}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </controls:RadBorder>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentView>

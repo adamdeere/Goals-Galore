@@ -1,28 +1,26 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using GoalsGalore.Model;
-using GoalsGalore.ViewModels.BaseViewModels;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+﻿using GoalsGalore.ViewModels.BaseViewModels;
+using GoalsGalore.ViewModels.MainViewModels;
+using PlatinumWMSSwiftUtilityLib.Controls;
 
 namespace GoalsGalore.ViewModels;
 
-public partial class MainViewModel : BaseViewModel
+public partial class MainViewModel(ViewModelA vmA,
+                                   ViewModelB vmB,
+                                   ViewModelC vmC)
+    : BaseViewModel
 {
-    [RelayCommand]
-    private void Appearing()
-    {
-        Debug.WriteLine("lololo");
-    }
+    public PlatTabView PlatTabView { get; set; }
+    public ViewModelA VmA { get; } = vmA;
+    public ViewModelB VmB { get; } = vmB;
+    public ViewModelC VmC { get; } = vmC;
 
-    [RelayCommand]
-    private void Disappearing()
+    public override async Task OnAppearingAsync()
     {
-        // Handle any cleanup or state saving if necessary
-        Debug.WriteLine("MainViewModel is disappearing");
-    }
-
-    [RelayCommand]
-    private void TabSelected(string tabSelected)
-    {
+        // Run View models in parallel
+        await Task.WhenAll(
+            VmA.OnAppearingAsync(),
+            VmB.OnAppearingAsync(),
+            VmC.OnAppearingAsync()
+        );
     }
 }

@@ -2,15 +2,71 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui">
+                    xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+                    xmlns:converters="clr-namespace:PlatinumWMSSwiftUtilityLib.Converters;assembly=PlatinumWMSSwiftUtilityLib">
+
+    <x:String x:Key="TelerikFontIcons">TelerikFontExamples</x:String>
+
+    <converters:StepBgConverter x:Key="StepBgConverter" />
 
     <Style TargetType="telerik:RadBorder"
-        x:Key="BreadCrumbBorder">
+           x:Key="BreadCrumbBorder">
 
         <Setter Property="CornerRadius" Value="25" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="HeightRequest" Value="30" />
         <Setter Property="WidthRequest" Value="30" />
         <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <Style TargetType="telerik:PickerPopupHeaderView" x:Key="headerStyle">
+        <Setter Property="BackgroundColor" Value="#1188FF" />
+        <Setter Property="HeightRequest" Value="64" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="VerticalOptions" Value="Fill" />
+    </Style>
+
+    <Style x:Key="HeaderItemStyle"
+           TargetType="telerik:TabViewHeaderItem">
+
+        <Setter Property="FontAttributes" Value="Italic" />
+        <Setter Property="TextColor" Value="#99000000" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup Name="CommonStates">
+                    <VisualState Name="Normal" />
+                    <VisualState Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="#61000000" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="#e05194" />
+                            <Setter Property="BorderColor" Value="#e05194" />
+                            <Setter Property="BorderThickness" Value="0,0,0,2" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabViewHeaderStyle"
+     TargetType="telerik:TabViewHeader">
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}" />
+        <Setter Property="BorderColor" Value="{StaticResource Gray100}" />
+    </Style>
+
+    <Style TargetType="telerik:RadTabView">
+
+        <Setter Property="HeaderItemStyle" Value="{StaticResource HeaderItemStyle}" />
+        <Setter Property="HeaderStyle" Value="{StaticResource TabViewHeaderStyle}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}" />
+
+        <Setter Property="Padding" Value="5" />
     </Style>
 </ResourceDictionary>

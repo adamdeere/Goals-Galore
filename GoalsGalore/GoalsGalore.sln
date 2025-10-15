@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoalsGalore", "GoalsGalore.csproj", "{B596FDEC-DB4B-46B3-8448-1C50D49C08A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatinumWMSSwiftUtilityLib", "..\..\WarehouseApp\PlatinumWMSSwiftUtilityLib\PlatinumWMSSwiftUtilityLib.csproj", "{D53CDD74-B176-F88B-A29A-9FCF25FA7F03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,8 +15,13 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B596FDEC-DB4B-46B3-8448-1C50D49C08A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B596FDEC-DB4B-46B3-8448-1C50D49C08A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B596FDEC-DB4B-46B3-8448-1C50D49C08A0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{B596FDEC-DB4B-46B3-8448-1C50D49C08A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B596FDEC-DB4B-46B3-8448-1C50D49C08A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D53CDD74-B176-F88B-A29A-9FCF25FA7F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D53CDD74-B176-F88B-A29A-9FCF25FA7F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D53CDD74-B176-F88B-A29A-9FCF25FA7F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D53CDD74-B176-F88B-A29A-9FCF25FA7F03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
